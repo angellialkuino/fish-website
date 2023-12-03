@@ -3,17 +3,17 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const user = await prisma.user.upsert({
-    where: { email: "admin@admin.com" },
-    update: {},
-    create: {
-      name: "Admin",
-      email: "admin@admin.com",
-      role: "admin",
+  const fish = await prisma.fish.create({
+    data: {
+      name: "Sample Fish",
+      class: "Sample Class",
+      species: "Sample Species",
+      description: "This is a sample fish.",
+      photoLink: "https://i.ibb.co/CQDMvGk/403729215-1377626086494735-5552912037879827652-n.jpg",
     },
   });
 
-  console.log({ user });
+  console.log({ fish });
 }
 
 main()

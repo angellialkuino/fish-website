@@ -7,11 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Fish {
   id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  role      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  name      String   @unique
+  class     String
+  species   String
+  description   String
+  photoLink String
 }
