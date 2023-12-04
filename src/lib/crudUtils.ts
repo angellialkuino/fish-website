@@ -23,6 +23,7 @@ export const getIndividualFish = async (fishId) => {
 };
 
 export const updateFish = async (id, updatedData) => {
+  console.log("new data: ", updatedData);
   try {
     const updatedFish = await prisma.fish.update({
       where: {
@@ -30,6 +31,7 @@ export const updateFish = async (id, updatedData) => {
       },
       data: updatedData,
     });
+    console.log("updated fish: ", updatedFish);
     return updatedFish;
   } catch (error) {
     return { error };
@@ -37,6 +39,7 @@ export const updateFish = async (id, updatedData) => {
 };
 
 export const createFish = async (newFishData) => {
+  console.log("new fish data: ", newFishData);
   try {
     const newFish = await prisma.fish.create({
       data: newFishData,

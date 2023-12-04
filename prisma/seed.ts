@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const fish = await prisma.fish.create({
+  const fish1 = await prisma.fish.create({
     data: {
       name: "Sample Fish",
       class: "Sample Class",
@@ -13,7 +13,17 @@ async function main() {
     },
   });
 
-  console.log({ fish });
+  const fish2 = await prisma.fish.create({
+    data: {
+      name: "Sample Fish 2",
+      class: "Sample Class 2",
+      species: "Sample Species 2",
+      description: "This is a sample fish 2.",
+      photoLink: "https://i.ibb.co/52LXfbv/GRU-logo.png",
+    },
+  });
+
+  console.log({ fish1, fish2 });
 }
 
 main()
