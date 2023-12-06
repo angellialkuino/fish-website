@@ -45,22 +45,27 @@ const UpdateForm = ({ fish }) => {
         />
       </div>
       <input
+        placeholder="Name"
         value={name}
         onChange={(e) => handleOnChange(e, setName)}
       />
       <input
+        placeholder="Class"
         value={fishClass}
         onChange={(e) => handleOnChange(e, setFishClass)}
       />
       <input
+        placeholder="Species"
         value={species}
         onChange={(e) => handleOnChange(e, setSpecies)}
       />
       <input
+        placeholder="Description"
         value={description}
         onChange={(e) => handleOnChange(e, setDescription)}
       />
       <input
+        placeholder="Photo Link"
         value={photoLink}
         onChange={(e) => handleOnChange(e, setPhotoLink)}
       />

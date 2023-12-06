@@ -3,7 +3,7 @@ import AddForm from "./components/AddForm";
 import CardsContainer from "./components/CardsContainer";
 import { getAllFishes } from "../lib/crudUtils";
 
-const page = async () => {
+const Home = async () => {
   const fishes = await getAllFishes();
 
   return (
@@ -14,4 +14,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Home;
