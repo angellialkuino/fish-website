@@ -18,9 +18,7 @@ const CardsContainer = ({ data }) => {
     <div>
       {data &&
         data.map((fish) => (
-          <div
-            key={fish.id}
-            className="bg-blue-500 w-fit">
+          <div key={fish.id} className="bg-blue-500 w-fit">
             <Link href={`/fishes/${fish.id}`}>
               <h1>{fish.name}</h1>
               <p>{fish.class}</p>
@@ -35,7 +33,8 @@ const CardsContainer = ({ data }) => {
             </Link>
             <button
               onClick={() => handleOnClickDelete(fish.id)}
-              className="bg-red-500">
+              className="bg-red-500"
+            >
               Delete
             </button>
           </div>

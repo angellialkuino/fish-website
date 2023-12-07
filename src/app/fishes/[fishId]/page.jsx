@@ -1,6 +1,6 @@
-import UpdateForm from "../../components/UpdateForm";
 import { getIndividualFish } from "../../../lib/crudUtils";
-import Image from "next/image";
+import SidePart from "../components/SidePart";
+import FishView from "../components/FishView";
 
 const page = async ({ params }) => {
   const { fishId } = params;
@@ -13,7 +13,12 @@ const page = async ({ params }) => {
 
   return (
     <div>
-      <UpdateForm fish={fish} />
+      <div className="h-screen w-full bg-blue flex">
+        <SidePart description={"Learn about their\nendangered species"} />
+        <div className="py-16 px-44 w-2/3">
+          <FishView fish={fish} />
+        </div>
+      </div>
     </div>
   );
 };
