@@ -2,6 +2,7 @@
 
 import { React, useState } from "react";
 import { updateFishAction } from "./_actions";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function FishUpdate({ fish }) {
@@ -11,8 +12,30 @@ export default function FishUpdate({ fish }) {
   const [description, setDescription] = useState(fish.description);
   const [photoLink, setPhotoLink] = useState(fish.photoLink);
 
+  const router = useRouter();
+
   const handleOnChange = (e, setStateFunction) => {
     setStateFunction(e.target.value);
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      name: name,
+      class: fishClass,
+      species: species,
+      description: description,
+      photoLink: photoLink,
+    };
+    try {
+      await updateFishAction(fish.id, data);
+      console.log("Successful");
+      alert("Fish Updated Successfully");
+      router.push("/");
+    } catch (error) {
+      console.error("Error updating fish:", error);
+    }
   };
 
   return (
@@ -25,7 +48,11 @@ export default function FishUpdate({ fish }) {
         />
       </div>
 
-      <form className="p-10 gap-4 flex flex-col text-dark-blue font-commissioner">
+      <form
+        id="fish-form"
+        onSubmit={(e) => handleOnSubmit(e)}
+        className="p-10 gap-4 flex flex-col text-dark-blue font-commissioner"
+      >
         <input
           className="py-2 px-6 rounded-full bg-white-blue"
           value={photoLink}

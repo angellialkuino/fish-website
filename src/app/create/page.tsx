@@ -6,7 +6,7 @@ const page = async () => {
   return (
     <div>
       <div className="h-screen w-full bg-blue flex">
-        <SidePart description={"Create a new fish entry\nin the database!"} />
+        <SidePart description={"Create a new fish entry\nin the database!"} form/>
         <div className="py-16 px-44 w-2/3">
           <FishCreate />
         </div>

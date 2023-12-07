@@ -1,8 +1,8 @@
 "use client";
 
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import { createFishAction } from "./_actions";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function FishUpdate() {
   const [name, setName] = useState("");
@@ -11,13 +11,42 @@ export default function FishUpdate() {
   const [description, setDescription] = useState("");
   const [photoLink, setPhotoLink] = useState("");
 
+  const formRef = useRef(null);
+  const router = useRouter();
+
   const handleOnChange = (e, setStateFunction) => {
     setStateFunction(e.target.value);
   };
 
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      name: name,
+      class: fishClass,
+      species: species,
+      description: description,
+      photoLink: photoLink,
+    };
+    try {
+      await createFishAction(data);
+      formRef.current.reset();
+      console.log("Successful");
+      alert("New Fish Created Successfully");
+      router.push("/");
+    } catch (error) {
+      console.error("Error adding fish:", error);
+    }
+  };
+
   return (
     <div className="h-full bg-dark-blue rounded-3xl overflow-hidden flex flex-col">
-      <form className="p-10 gap-4 flex flex-col text-dark-blue font-commissioner">
+      <form
+        id="fish-form"
+        ref={formRef}
+        onSubmit={(e) => handleOnSubmit(e)}
+        className="p-10 gap-4 flex flex-col text-dark-blue font-commissioner"
+      >
         <input
           className="py-2 px-6 rounded-full bg-white-blue placeholder-blue"
           placeholder="Photograph Link"
