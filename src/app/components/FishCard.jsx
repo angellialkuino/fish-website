@@ -24,20 +24,17 @@ export default function FishCard({ fish }) {
         <div className="pt-4 flex flex-row gap-4">
           <Link
             className="bg-white-blue text-dark-blue hover:text-blue h-12 w-12 rounded-full flex justify-center items-center"
-            href={`/fishes/${fish.id}`}
-          >
+            href={`/fishes/${fish.id}`}>
             <FaSearch />
           </Link>
           <Link
             className="bg-white-blue text-dark-blue hover:text-blue h-12 w-12 rounded-full flex justify-center items-center"
-            href={`/update/${fish.id}`}
-          >
+            href={`/update/${fish.id}`}>
             <FaPen />
           </Link>
           <button
             className="bg-white-blue text-dark-blue hover:text-blue h-12 w-12 rounded-full flex justify-center items-center"
-            onClick={() => handleOnClickDelete(fish.id)}
-          >
+            onClick={() => handleOnClickDelete(fish.id)}>
             <FaTrash />
           </button>
         </div>
@@ -45,10 +42,10 @@ export default function FishCard({ fish }) {
       <div className="relative h-48 w-48 rounded-full bg-white-blue overflow-hidden">
         <Image
           alt={`${fish.name}'s Photo`}
-          height={192}
-          width={192}
-          className="object-cover object-left"
+          className="object-contain object-center w-100 h-100"
           src={fish.photoLink}
+          draggable={false}
+          fill
         />
       </div>
     </div>
