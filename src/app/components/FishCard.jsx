@@ -44,6 +44,7 @@ export default function FishCard({ fish }) {
       </div>
       <div className="relative h-48 w-48 rounded-full bg-white-blue overflow-hidden">
         <Image
+          alt={`${fish.name}'s Photo`}
           height={192}
           width={192}
           className="object-cover object-left"

@@ -42,6 +42,7 @@ export default function FishUpdate({ fish }) {
     <div className="h-full bg-dark-blue rounded-3xl overflow-hidden flex flex-col">
       <div className="h-40 bg-white-blue relative">
         <Image
+          alt={`${fish.name}'s Photo`}
           fill
           className="object-center object-contain"
           src={fish.photoLink}

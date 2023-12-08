@@ -9,6 +9,7 @@ export default function SidePart({ description, form }) {
     <div className="h-screen w-1/3 relative">
       <Image
         src="/round_side2.png"
+        alt="round object"
         fill
         className="object-cover object-right absolute z-10"
       />
