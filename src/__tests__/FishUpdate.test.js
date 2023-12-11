@@ -114,7 +114,7 @@ describe("FishUpdate", () => {
         target: { value: "https://example.com/updated-photo.jpg" },
       });
 
-      fireEvent.click(getByTestId("fish-form2"));
+      fireEvent.submit(getByTestId("fish-form2"));
 
       await waitFor(() =>
         expect(updateFishAction).toHaveBeenCalledWith(1, {
