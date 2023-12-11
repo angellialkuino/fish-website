@@ -9,5 +9,12 @@ describe("SidePart", () => {
       expect(getByText("Fish")).toBeInTheDocument();
       expect(getByText("test")).toBeInTheDocument();
     });
+
+    it("should render the buttons", () => {
+      const wrapper = render(<SidePart description="test" />);
+      const links = wrapper.getAllByRole("link");
+      expect(links[0].href).toContain("/");
+      expect(links[1].href).toContain("/create");
+    });
   });
 });

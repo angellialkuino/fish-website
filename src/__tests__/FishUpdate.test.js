@@ -1,13 +1,24 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import { updateFishAction } from "../app/components/_actions";
-import UpdateForm from "../app/components/UpdateForm";
+import FishUpdate from "../app/components/FishUpdate";
 
 jest.mock("../app/components/_actions", () => ({
   updateFishAction: jest.fn(),
 }));
 
-describe("UpdateForm", () => {
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      prefetch: () => null,
+      push: () => null,
+    };
+  },
+}));
+
+window.alert = jest.fn();
+
+describe("FishUpdate", () => {
   describe("Rendering", () => {
     it("should render UpdateForm component with initial data", () => {
       const fishData = {
@@ -19,9 +30,7 @@ describe("UpdateForm", () => {
         photoLink: "https://example.com/photo.jpg",
       };
 
-      const { getByPlaceholderText, getByText } = render(
-        <UpdateForm fish={fishData} />
-      );
+      const { getByPlaceholderText } = render(<FishUpdate fish={fishData} />);
 
       expect(getByPlaceholderText("Name").value).toBe("Fishy");
       expect(getByPlaceholderText("Class").value).toBe("Classy");
@@ -30,8 +39,6 @@ describe("UpdateForm", () => {
       expect(getByPlaceholderText("Photo Link").value).toBe(
         "https://example.com/photo.jpg"
       );
-
-      expect(getByText("Update")).toBeInTheDocument();
     });
   });
 
@@ -46,7 +53,7 @@ describe("UpdateForm", () => {
         photoLink: "https://example.com/photo.jpg",
       };
 
-      const { getByPlaceholderText } = render(<UpdateForm fish={fishData} />);
+      const { getByPlaceholderText } = render(<FishUpdate fish={fishData} />);
 
       fireEvent.change(getByPlaceholderText("Name"), {
         target: { value: "Updated Fishy" },
@@ -87,8 +94,8 @@ describe("UpdateForm", () => {
         photoLink: "https://example.com/photo.jpg",
       };
 
-      const { getByText, getByPlaceholderText } = render(
-        <UpdateForm fish={fishData} />
+      const { getByPlaceholderText, getByTestId } = render(
+        <FishUpdate fish={fishData} />
       );
 
       fireEvent.change(getByPlaceholderText("Name"), {
@@ -107,7 +114,7 @@ describe("UpdateForm", () => {
         target: { value: "https://example.com/updated-photo.jpg" },
       });
 
-      fireEvent.click(getByText("Update"));
+      fireEvent.click(getByTestId("fish-form2"));
 
       await waitFor(() =>
         expect(updateFishAction).toHaveBeenCalledWith(1, {

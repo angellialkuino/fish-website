@@ -15,8 +15,8 @@ describe("FishView", () => {
       };
       const { getByText } = render(<FishView fish={fishData} />);
       expect(getByText("Fishy")).toBeInTheDocument();
-      //   expect(getByText("Classy")).toBeInTheDocument(); ah ga error tungod sa <br/>
-      //   expect(getByText("Speciesy")).toBeInTheDocument();
+      expect(getByText(/Classy[\S]/i)).toBeInTheDocument();
+      expect(getByText(/[\S]Speciesy/i)).toBeInTheDocument();
       expect(getByText("Description")).toBeInTheDocument();
     });
   });

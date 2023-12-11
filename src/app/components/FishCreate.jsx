@@ -43,13 +43,14 @@ export default function FishUpdate() {
     <div className="h-full bg-dark-blue rounded-3xl overflow-hidden flex flex-col">
       <form
         id="fish-form"
+        data-testid="fish-form1"
         ref={formRef}
         onSubmit={(e) => handleOnSubmit(e)}
         className="p-10 gap-4 flex flex-col text-dark-blue font-commissioner"
       >
         <input
           className="py-2 px-6 rounded-full bg-white-blue placeholder-blue"
-          placeholder="Photograph Link"
+          placeholder="Photo Link"
           value={photoLink}
           onChange={(e) => handleOnChange(e, setPhotoLink)}
         />
