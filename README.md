@@ -14,3 +14,7 @@
 - jest
 - jest-environment-jsdom
 - react-icons
+
+## Tests
+
+![image](https://github.com/angellialkuino/fish-website/assets/57930589/cd957b10-ac0c-4aaf-a8a7-ed82580021e6)
